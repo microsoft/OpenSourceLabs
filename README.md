@@ -7,7 +7,7 @@ This repository contains [submodules](https://github.com/blog/2104-working-with-
 Git expects us to explicitly ask it to download the submodule's content. You can use `git submodule update --init --recursive` here as well, but if you're cloning this repository for the first time, you can use a modified clone command to ensure you download everything, including any submodules:
 
 ```
-git clone --recursive https://github.com/Microsoft/OpenSourceLabs.git
+git clone --recursive git@github.com:Microsoft/OpenSourceLabs.git
 ```
 
 ## Updating latest changes from submodules
@@ -15,7 +15,7 @@ git clone --recursive https://github.com/Microsoft/OpenSourceLabs.git
 In order to updated the repository submodules content, you cna execute the following command regularly:
 
 ```
-git submodule update --recursive
+git submodule update --remote --recursive
 ```
 
 ## Contributing
