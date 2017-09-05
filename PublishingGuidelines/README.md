@@ -83,7 +83,7 @@ This will output to screen a auto-generated table of contents that can be copy a
 
 As a team member you have access to create a new lab by cloning this repository and following the **Storage Conventions** for the lab.
 
-The initial skeleton of the lab should include the `skeleton/template.md` template file and the `LICENSE` file.
+The initial skeleton of the lab should include the `skeleton/README.md` template file and the `skeleton/LICENSE` file.
  
 
 ## Git repository best practices 

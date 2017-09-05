@@ -1,4 +1,4 @@
-# Microsoft Open Source Labs Publishing Guidelines
+# Microsoft Open Source Labs
 
 ## Contributing
 
