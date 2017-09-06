@@ -10,38 +10,51 @@ The Table of Contents for the Laboratory document.
 
 ### Overview
 
-In this lab, you're going to take a MEAN app (MongoDB, Express.js, AngularJS and Node.js) that is "Dockerized" with a Dockerfile and deploy it to Azure App Service (Linux). The Docker images you create will be pushed to an instance of Azure Container Service.
+In this lab, you're going to take a MEAN app (MongoDB, Express.js, AngularJS and Node.js) that is "Dockerized" with a Dockerfile and deploy it to Azure App Service (Linux). The Docker image you create will be pushed to an instance of Azure Container Service.
 
 ### Pre-requisites
 
 - Docker installed on your machine
-    - On Windows, install Docker for Windows: https://docs.docker.com/docker-for-windows/install/#install-docker-for-windows 
-    - On a Mac, install Docker for Mac: https://docs.docker.com/docker-for-mac/install/#install-and-run-docker-for-mac 
-    - Then, verify installation:
+    
+    On Windows, install Docker for Windows: https://docs.docker.com/docker-for-windows/install/#install-docker-for-windows 
+    
+    On a Mac, install Docker for Mac: https://docs.docker.com/docker-for-mac/install/#install-and-run-docker-for-mac 
+    
+    Then, verify installation:
     ```
     docker -v
     ```
 - Visual Studio Code (or your favorite code editor)
-    - On Windows and Mac, download and install from: https://code.visualstudio.com/Download
-    - Then, verify installation:
+    
+    On Windows and Mac, download and install from: https://code.visualstudio.com/Download
+    
+    Then, verify installation:
     ```
     code --version
     ```
+
+    Install Docker extension for VS Code (optional)
+    ![Docker extension for VS Code](../media/ContainersOnAzure/VSCodeDockerExtension.png)
+
 - Azure CLI installed and configured with your Azure subscription
-    - On Windows, download and install from: https://aka.ms/InstallAzureCliWindows 
-    - On a Mac, run the below command in Terminal
+    
+    On Windows, download and install from: https://aka.ms/InstallAzureCliWindows 
+    On a Mac, run the below command in Terminal
     ```
     curl -L https://aka.ms/InstallAzureCli | bash
     ```
-    - Then login into your Azure subscription to verify installation:
+
+    Then login into your Azure subscription to verify installation:
     ```
     az login
     ```
-    - If you have many subscriptions, you may choose one:
+
+    If you have many subscriptions, you may choose one:
     ```
     az account set -s <subscription-GUID>
     ```
-    - Create the Resource Group to use throughout the lab:
+
+    Create the Resource Group to use throughout the lab:
     ```
     az group create -n <rg name> -l westeurope 
     ```
@@ -49,32 +62,115 @@ In this lab, you're going to take a MEAN app (MongoDB, Express.js, AngularJS and
 
 ### Topics Covered
 
-Topics covered.
+- Running locally
+- Pushing Docker images to Azure Container Registry
+- Deployment to Azure App Service
+- Creating CosmosDB database with MongoDB adapter and configuring the Web App
 
+## Lab
 
-## Laboratory Section
+In the instructions below, replace **<rg name>** with the name of the Resource Group you created earlier.
 
-Here is where the content of the lab is added. Several sections and/or subsections can be added.
+### Running locally
 
+Clone the current repository to your machine
+
+Open the ```app/Dockerfile``` in your code editor, and review it
+
+Build the image, tagging it as **meantodo**
+```
+docker build -t meantodo app/.
+```
+
+### Pushing Docker images to Azure Container Registry
+
+Create an Azure Container Registry (~2 minutes)
+```
+az acr create -g <rg name> -n <registry name> --admin-enabled --sku Managed_Standard
+```
+
+Login into the registry
+```
+az acr login -n <registry name>
+```
+
+Tag your image locally
+```
+docker tag <image>:latest <registry name>.azurecr.io/<image>:latest
+```
+
+Publish your image to the registry
+```
+docker push <registry name>.azurecr.io/<image>:latest
+```
+
+### Deployment to Azure App Service
+
+Create the App Service Plan
+```
+az appservice plan create -g <rg name> -n <plan name> --is-linux
+```
+
+Create the Web App
+```
+az webapp create -n <web app name> -p <plan name> -g <rg name>
+```
+
+Get the Azure Container Registry credentials
+```
+az acr credential show -n <registry name> -g <rg name>
+```
+
+Update the Web App configuration with Azure Container Registry credentials and container image
+```
+az webapp config container set -n <web app name> -g <rg name>
+--docker-custom-image-name <registry name>.azurecr.io/<image>:latest
+--docker-registry-server-url https:// <registry name>.azurecr.io
+--docker-registry-username <acr admin username>
+--docker-registry-password <acr admin password>
+```
+
+Browse to the Web App [http://webappname.azurewebsites.net](http://webappname.azurewebsites.net)
+
+> Notice that you'll find the Web App is not working, since we need to create the MongoDB.
+
+### Creating CosmosDB database with MongoDB adapter and configuring the Web App
+
+In your terminal, type the following command to create the MongoDB database.
+```
+az cosmosdb create -n <mongo name> -g <rg name> --kind MongoDB
+```
+
+Get the MongoDB connection string
+```
+az cosmosdb list-connection-strings -n <mongo name> -g <rg name>
+```
+
+Configure the ```MONGO_URL``` environment variable on the Web App. This is how the application is configured to read the connection string through ```process.env.MONGO_URL```.
+```
+az webapp config appsettings set -n <web app name> -g <rg name> --settings MONGO_URL="<the connection string>"
+```
+
+Now play around with inserting a few items, it should be working.
 
 ## Conclusion
 
-A conclusion detailing what was done and any follow-up steps.
+In this lab, you created a private Docker image repository on Azure Container Registry and pushed an MEAN application image to it. You also created an App Service Plan running Linux and a Web App that is configured to pull that Docker image. For the database, you created a MongoDB on top of CosmosDB.
 
 
 ## End your Lab
 
-Here it should be explained how to clear, delete and release any used resources so the user doesn't get billed after the lab.
-
+Clean up your lab by deleting the Resource Group you created.
+```
+az group delete -n <rg name>
+```
 
 ## Additional Resources and References
 
-Any additional resource, links, references should be added here.
+- [Azure Container Registry](https://docs.microsoft.com/en-us/azure/container-registry/)
+- [Azure App Service Linux](https://docs.microsoft.com/en-us/azure/app-service/app-service-linux-readme)
+- [Azure Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/)
 
-
-### Useful Links
-
-Any useful link for the user.
 
 
 ## License
