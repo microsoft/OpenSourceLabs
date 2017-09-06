@@ -3,7 +3,21 @@
 
 ## Table of Contents
 
-The Table of Contents for the Laboratory document.
+   * [Containers on Azure App Service](#containers-on-azure-app-service)
+      * [Table of Contents](#table-of-contents)
+      * [Overview and Pre-Requisites](#overview-and-pre-requisites)
+         * [Overview](#overview)
+         * [Pre-requisites](#pre-requisites)
+         * [Topics Covered](#topics-covered)
+      * [Lab](#lab)
+         * [Running locally](#running-locally)
+         * [Pushing Docker images to Azure Container Registry](#pushing-docker-images-to-azure-container-registry)
+         * [Deployment to Azure App Service](#deployment-to-azure-app-service)
+         * [Creating CosmosDB database with MongoDB adapter and configuring the Web App](#creating-cosmosdb-database-with-mongodb-adapter-and-configuring-the-web-app)
+      * [Conclusion](#conclusion)
+      * [End your Lab](#end-your-lab)
+      * [Additional Resources and References](#additional-resources-and-references)
+      * [License](#license)
 
 
 ## Overview and Pre-Requisites
