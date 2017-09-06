@@ -1,4 +1,4 @@
-# Containers on Azure App Service
+# Laboratory Title
 
 
 ## Table of Contents
@@ -8,43 +8,17 @@ The Table of Contents for the Laboratory document.
 
 ## Overview and Pre-Requisites
 
+An Overview of the scope of the lab, any pre-requisites and topics covered on the lab should be clearly explained here.
+
+
 ### Overview
 
-In this lab, you're going to take a MEAN app (MongoDB, Express.js, AngularJS and Node.js) that is "Dockerized" with a Dockerfile and deploy it to Azure App Service (Linux). The Docker images you create will be pushed to an instance of Azure Container Service.
+Overview of the lab.
+
 
 ### Pre-requisites
 
-- Docker installed on your machine
-    - On Windows, install Docker for Windows: https://docs.docker.com/docker-for-windows/install/#install-docker-for-windows 
-    - On a Mac, install Docker for Mac: https://docs.docker.com/docker-for-mac/install/#install-and-run-docker-for-mac 
-    - Then, verify installation:
-    ```
-    docker -v
-    ```
-- Visual Studio Code (or your favorite code editor)
-    - On Windows and Mac, download and install from: https://code.visualstudio.com/Download
-    - Then, verify installation:
-    ```
-    code --version
-    ```
-- Azure CLI installed and configured with your Azure subscription
-    - On Windows, download and install from: https://aka.ms/InstallAzureCliWindows 
-    - On a Mac, run the below command in Terminal
-    ```
-    curl -L https://aka.ms/InstallAzureCli | bash
-    ```
-    - Then login into your Azure subscription to verify installation:
-    ```
-    az login
-    ```
-    - If you have many subscriptions, you may choose one:
-    ```
-    az account set -s <subscription-GUID>
-    ```
-    - Create the Resource Group to use throughout the lab:
-    ```
-    az group create -n <rg name> -l westeurope 
-    ```
+Pre-requisites of the lab.
 
 
 ### Topics Covered
