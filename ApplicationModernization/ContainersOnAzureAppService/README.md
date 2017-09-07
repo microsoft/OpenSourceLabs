@@ -24,7 +24,7 @@
 
 ### Overview
 
-In this lab, you're going to take a MEAN app (MongoDB, Express.js, AngularJS and Node.js) that is "Dockerized" with a Dockerfile and deploy it to a Web App for Containers on Azure App Service (Linux). The Docker image you create will be pushed to an instance of Azure Container Service.
+In this lab, you're going to take a MEAN app (MongoDB, Express.js, AngularJS and Node.js) that is "Dockerized" with a Dockerfile and deploy it to a Web App for Containers on Azure App Service (Linux). The Docker image you create will be pushed to an instance of Azure Container Registry.
 
 > The application being deployed is a Dockerized version of [node-todo](https://github.com/scotch-io/node-todo) by [@scotch-io](https://github.com/scotch-io)
 
