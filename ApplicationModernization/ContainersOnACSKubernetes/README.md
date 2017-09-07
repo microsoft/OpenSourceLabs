@@ -3,7 +3,22 @@
 
 ## Table of Contents
 
-   
+   * [Containers on Azure Container Service with Kubernetes](#containers-on-azure-container-service-with-kubernetes)
+      * [Table of Contents](#table-of-contents)
+      * [Overview and Pre-Requisites](#overview-and-pre-requisites)
+         * [Overview](#overview)
+         * [Pre-requisites](#pre-requisites)
+         * [Topics Covered](#topics-covered)
+      * [Lab](#lab)
+         * [Running locally](#running-locally)
+         * [Pushing Docker images to Azure Container Registry](#pushing-docker-images-to-azure-container-registry)
+         * [Creating CosmosDB database with MongoDB adapter](#creating-cosmosdb-database-with-mongodb-adapter)
+         * [Creating the Kubernetes cluster on Azure Container Service](#creating-the-kubernetes-cluster-on-azure-container-service)
+         * [Deploying the container to the Kubernetes cluster](#deploying-the-container-to-the-kubernetes-cluster)
+      * [Conclusion](#conclusion)
+      * [End your Lab](#end-your-lab)
+      * [Additional Resources and References](#additional-resources-and-references)
+      * [License](#license)   
 
 
 ## Overview and Pre-Requisites
