@@ -50,7 +50,7 @@ In this lab, you're going to take a MEAN app (MongoDB, Express.js, AngularJS and
     ```
 
     Install Docker extension for VS Code (optional)
-    ![Docker extension for VS Code](../media/ContainersOnAzure/VSCodeDockerExtension.png)
+    ![Docker extension for VS Code](media/VSCodeDockerExtension.png)
 
 - Azure CLI installed and configured with your Azure subscription
     
@@ -197,7 +197,16 @@ az webapp config appsettings set -n <web app name> --settings MONGO_URL="<the co
 Now browse to the web app again and play around with inserting a few items, it should be working.
 
 
-![Todo-aholic app running](../media/ContainersOnAzure/todoapp.png)
+![Todo-aholic app running](media/todoapp.png)
+
+### Scaling
+Manually scale the App Service Plan hosting the Web App to 2 workers
+```
+az appservice plan update --number-of-workers 2 -n <plan name>
+```
+You can also setup auto-scaling by different metrics, such as CPU usage, memory usage or even metrics from Application Insights through the Azure portal, but you need to be running the Standard or Premium SKUs.
+
+![Auto-scaling from the Azure portal](media/autoscale.png)
 
 ## Conclusion
 
