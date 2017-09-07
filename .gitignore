@@ -10,7 +10,11 @@ Thumbs.db
 # ignore other files here
 ################################################################################
 
-
+npm-debug.log
+node_modules
+.kube
+*.local.yaml
+.vscode
 
 ################################################################################
 # not ignore .gitignore

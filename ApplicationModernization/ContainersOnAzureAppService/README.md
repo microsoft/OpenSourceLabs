@@ -174,6 +174,11 @@ Browse to the Web App [http://webappname.azurewebsites.net](http://webappname.az
 > Notice that you'll find the Web App is not working, since we need to create the MongoDB. You can view your Web App's STDERR and STDOUT output from the container on the streaming logs here: 
 https://webappname.scm.azurewebsites.net/api/logstream
 
+You can also view the streaming logs by using the following command
+```
+az webapp log tail -n <web app name>
+```
+
 > Notice that if you update the image in the Azure Container Registry, you will need to Stop/Start or Restart the Web App to pull the new Docker image. This is something that will be addressed at a later lab where you will enable Continuous Integration and Continuous Deployment. 
 
 ### Creating CosmosDB database with MongoDB adapter and configuring the Web App

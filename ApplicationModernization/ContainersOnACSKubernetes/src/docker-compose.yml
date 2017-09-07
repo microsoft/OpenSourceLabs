@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  meantodo:
+    image: meantodo
+    build: .
+    ports:
+      - 8080:8080
