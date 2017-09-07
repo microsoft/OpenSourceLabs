@@ -181,7 +181,9 @@ Register the Azure Container Registry secret within Kubernetes
 ```
 kubectl create secret docker-registry <acr name>
 --docker-server=<acr name>.azurecr.io
---docker-username=<your acr admin username> --docker-password=<your acr admin password> --docker-email=<your email>
+--docker-username=<your acr admin username>
+--docker-password=<your acr admin password>
+--docker-email=<your email>
 ```
 
 Examine the ```src/meantodo.yaml``` file which should be like the below, replace ```<acr name>``` with your Azure Container Registry name and ```<mongo connection string>``` with the connection string you obtained from the earlier steps.
