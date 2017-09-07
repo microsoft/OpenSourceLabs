@@ -1,3 +1,4 @@
 [submodule "ApplicationModernization/ContainersOnAzureIntroLab"]
 	path = ApplicationModernization/ContainersOnAzureIntroLab
 	url = https://github.com/shanepeckham/ContainersOnAzure_IntroLab
+	branch = master
