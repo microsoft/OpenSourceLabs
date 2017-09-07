@@ -261,7 +261,7 @@ az group delete -n <rg name>
 ## Additional Resources and References
 
 - [Azure Container Registry](https://docs.microsoft.com/en-us/azure/container-registry/)
-- [Azure App Service Linux](https://docs.microsoft.com/en-us/azure/app-service/app-service-linux-readme)
+- [Azure Container Service with Kubernetes](https://docs.microsoft.com/en-us/azure/container-service/kubernetes/)
 - [Azure Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/)
 
 
