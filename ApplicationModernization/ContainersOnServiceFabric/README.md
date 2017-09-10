@@ -3,7 +3,22 @@
 
 ## Table of Contents
 
-
+   * [Containers on Azure Service Fabric](#containers-on-azure-service-fabric)
+      * [Table of Contents](#table-of-contents)
+      * [Overview and Pre-Requisites](#overview-and-pre-requisites)
+         * [Overview](#overview)
+         * [Pre-requisites](#pre-requisites)
+         * [Topics Covered](#topics-covered)
+      * [Lab](#lab)
+         * [Running locally](#running-locally)
+         * [Pushing Docker images to Azure Container Registry](#pushing-docker-images-to-azure-container-registry)
+         * [Creating CosmosDB database with MongoDB adapter](#creating-cosmosdb-database-with-mongodb-adapter)
+         * [Creating Azure Service Fabric on Linux (~ 15 minutes)](#creating-azure-service-fabric-on-linux--15-minutes)
+         * [Deploying the container to the Azure Service Fabric cluster](#deploying-the-container-to-the-azure-service-fabric-cluster)
+      * [Conclusion](#conclusion)
+      * [End your Lab](#end-your-lab)
+      * [Additional Resources and References](#additional-resources-and-references)
+      * [License](#license)
 
 ## Overview and Pre-Requisites
 
@@ -169,6 +184,8 @@ Install the certificate on your machine.
 open ~/sfclustercertificates/sf.pfx
 ```
 
+On Mac OSX, enable applications to access that key by launching Keychain, browsing to **My Certificates**, expanding the certificate and double clicking the private key. Once open, switch to **Access Control** and make sure **Allow all applications to access this item** is checked.
+![Enable applications to access the certificate](media/keychainsettings.png)
 
 The Azure Portal should now say that the cluster status is **waiting for nodes**. Once you see the nodes are ready, you may proceed to the next step.
 
@@ -185,6 +202,11 @@ sfctl cluster health
 ````
 
 You should also be able to use the browser to browse to the management endpoint. You'll be able to pick your certificate to use for authentication.
+
+![Authenticate to Service Fabric Explorer](media/sfexplorerlogin.png)
+
+Then once you're in, you should see your cluster status.
+![Service Fabric Explorer](media/sfexplorer.png)
 
 ### Deploying the container to the Azure Service Fabric cluster
 
@@ -221,6 +243,9 @@ sfctl compose create
 --repo-user <acr username>
 ```
 
+Almost immediately, you should see the Service Fabric application show up in the Service Fabric Explorer and see that it has been deployed on 3 nodes, as specified in the ```docker-compose.yml``` file.
+
+![Service Fabric Explorer app](media/sfexplorerapp.png)
 Browse to the cluster domain from the earlier steps [http://<cluster name\>.<region\>.cloudapp.azure.com](http://.cloudapp.azure.com)
 
 You should see the app running.
