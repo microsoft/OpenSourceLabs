@@ -16,6 +16,8 @@ node_modules
 *.local.yml
 *.local.yaml
 .vscode
+acsengine.mo
+acsengine.po
 
 ################################################################################
 # not ignore .gitignore
