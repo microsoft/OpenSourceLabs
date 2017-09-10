@@ -229,6 +229,8 @@ version: '3'
 services:
   web:
     image: <acr name>.azurecr.io/meantodo
+    deploy:
+      replicas: 3
     ports:
       - 80:8080
     environment:
