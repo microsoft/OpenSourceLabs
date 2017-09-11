@@ -161,7 +161,7 @@ You need to pass the location of your Resource Group. This creates a cluster tha
 mkdir ~/sfclustercertificates
 
 az sf cluster create
--n <cluster name>
+--cluster-name <cluster name>
 --os UbuntuServer1604
 --vm-user-name <admin username>
 --vm-password <admin password>
@@ -169,6 +169,7 @@ az sf cluster create
 --certificate-password <password to secure certificate>
 --certificate-output-folder ~/sfclustercertificates
 -l <your resource group location>
+-g <your resource group>
 ```
 
 Make note of the PEM certificate path and management endpoint. You'll use them to connect to the cluster.
