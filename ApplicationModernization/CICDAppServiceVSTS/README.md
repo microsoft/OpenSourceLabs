@@ -167,7 +167,8 @@ az webapp config appsettings set -n <microservice name>
 
 Configure the ```COLORMICROSERVICE``` environment variable on the **colorapp** Web App to point to the **colormicroservice**. This is how the application is configured to call the microservice through ```process.env.COLORMICROSERVICE```.
 ```
-az webapp config appsettings set -n <color app name> --settings COLORMICROSERVICE="http://<microservice name>.azurewebsites.net/colors"
+az webapp config appsettings set -n <color app name>
+--settings COLORMICROSERVICE="http://<microservice name>.azurewebsites.net/colors"
 ```
 
 
