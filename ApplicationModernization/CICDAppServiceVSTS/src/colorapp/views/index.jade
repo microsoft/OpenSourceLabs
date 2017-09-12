@@ -1,0 +1,30 @@
+extends layout
+
+
+    
+block content
+  script.
+    $( document ).ready(function() {     
+      update();
+    });
+
+  script.
+    function update() {
+      $.get('!{colorMicroservice}', function( data ) {
+
+        var li = $("ul#cluster li#"+data.computerName);
+        if(li.length>0) {
+          // update
+          $('ul#cluster li#'+ data.computerName).html('<li id="'+data.computerName+'"><div style="padding: 10px; background-color: ' + data.color + '">' + data.computerName + '</div></li>');
+        }
+        else {
+          // create
+          $('ul#cluster').append('<li id="'+data.computerName+'"><div style="padding: 10px; background-color: ' + data.color + '">' + data.computerName + '</div></li>');
+        }
+      });
+      
+      setTimeout(update,500);
+    }
+
+  h1= title
+  ul#cluster
