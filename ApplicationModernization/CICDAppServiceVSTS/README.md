@@ -143,7 +143,7 @@ az acr credential show -n <registry name>
 
 Update the Web App configurations with Azure Container Registry credentials and container image for both apps.
 
-Due to a bug in the Azure CLI, you also need to explicitly set the image name as an Application Setting.
+> Due to a bug in the Azure CLI, you also need to explicitly set the image name as an Application Setting.
 ```
 az webapp config container set -n <color app name>
 -i <registry name>.azurecr.io/colorapp
@@ -151,7 +151,8 @@ az webapp config container set -n <color app name>
 -u <acr admin username>
 -p <acr admin password>
 
-az webapp config appsettings set -n <color app name> --settings DOCKER_CUSTOM_IMAGE_NAME="<registry name>.azurecr.io/colorapp"
+az webapp config appsettings set -n <color app name>
+--settings DOCKER_CUSTOM_IMAGE_NAME="<registry name>.azurecr.io/colorapp"
 ```
 ```
 az webapp config container set -n <microservice name>
@@ -160,7 +161,8 @@ az webapp config container set -n <microservice name>
 -u <acr admin username>
 -p <acr admin password>
 
-az webapp config appsettings set -n <microservice name> --settings DOCKER_CUSTOM_IMAGE_NAME="<registry name>.azurecr.io/colormicroservice"
+az webapp config appsettings set -n <microservice name>
+--settings DOCKER_CUSTOM_IMAGE_NAME="<registry name>.azurecr.io/colormicroservice"
 ```
 
 Configure the ```COLORMICROSERVICE``` environment variable on the **colorapp** Web App to point to the **colormicroservice**. This is how the application is configured to call the microservice through ```process.env.COLORMICROSERVICE```.
@@ -189,7 +191,11 @@ az webapp deployment slot create -n <microservice name> -s staging --configurati
 
 You're now going to use the Azure Portal to easily configure a Continuous Build/Continuous deployment pipeline. This is going to be configured on Visual Studio Team Services.
 
+Navigate to the Continuous Delivery blade and hit Configure.
 
+![Configuring Continuous Delivery](media/contdelvsetup.png)
+
+In the **Source code** section, point the settings towards your forked copy of the repository. Make sure to change the **Dockerfile path** to ```ApplicationModernization/CICDAppServiceVSTS/src/colormicroservice/Dockerfile```
 
 ![Color app with 4 instances](media/colorapp4instances.png)
 
