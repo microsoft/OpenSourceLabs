@@ -3,7 +3,27 @@
 
 ## Table of Contents
 
- 
+   * [Continuous Delivery with containers on Azure App Service using Visual Studio Team Services](#continuous-delivery-with-containers-on-azure-app-service-using-visual-studio-team-services)
+      * [Table of Contents](#table-of-contents)
+      * [Overview and Pre-Requisites](#overview-and-pre-requisites)
+         * [Overview](#overview)
+         * [Pre-requisites](#pre-requisites)
+         * [Topics Covered](#topics-covered)
+      * [Lab](#lab)
+         * [Running locally](#running-locally)
+         * [Pushing Docker images to Azure Container Registry](#pushing-docker-images-to-azure-container-registry)
+         * [Creating Azure App Service and Web App](#creating-azure-app-service-and-web-app)
+         * [Create <strong>staging</strong> deployment slot for the <strong>colormicroservice</strong>](#create-staging-deployment-slot-for-the-colormicroservice)
+         * [Configure Build Pipeline](#configure-build-pipeline)
+         * [Configure Release Pipeline for Staging](#configure-release-pipeline-for-staging)
+         * [Add Production environment to Release Pipeline](#add-production-environment-to-release-pipeline)
+         * [Adding color into this](#adding-color-into-this)
+         * [Scaling your cluster](#scaling-your-cluster)
+      * [Conclusion](#conclusion)
+      * [End your Lab](#end-your-lab)
+      * [Additional Resources and References](#additional-resources-and-references)
+      * [License](#license)
+
 ## Overview and Pre-Requisites
 
 ### Overview
@@ -66,10 +86,12 @@ Essentially, the **colorapp** does AJAX requests to the **colormicroservice** an
 - Running locally
 - Pushing Docker images to Azure Container Registry
 - Creating Azure App Service and Web App
-- Creating staging deployment slot
-- Setting up Continuous Delivery
-- Scaling
-
+- Creating staging deployment slot for microservice
+- Configure Build Pipeline
+- Configure Release Pipeline for Staging
+- Add Production environment to Release Pipeline
+- Triggering a build using a code change
+- Scaling the application
 
 ## Lab
 
