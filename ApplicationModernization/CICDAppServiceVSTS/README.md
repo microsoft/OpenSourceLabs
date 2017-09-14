@@ -312,7 +312,7 @@ Hover over the **Staging** environment and hit the **add** button to add a seria
 
 ![Add Production environment](media/addproductionenv.png)
 
-Like before, elect the **empty process** template.
+Like before, select the **empty process** template.
 
 ![Select the Empty process template](media/releaseempty2.png)
 
@@ -336,32 +336,57 @@ Add yourself (or someone else on your project) as a pre-deployment approver. Thi
 
 ![Pre-deployment approver](media/predeploymentapprover.png)
 
-![Color app with 4 instances](media/colorapp4instances.png)
+### Adding color into this
 
-After you push the new code, VSTS will build a new Docker image and push it to the Azure Container Registry.
+Now as you may have noticed, when you browse to the Web App [http://<color app name\>.azurewebsites.net](http://webappname.azurewebsites.net), despite this app being called "colors" of the cluster, there aren't actually any colors!
 
-Following this, VSTS will run the Release to deploy to the staging slot of the **colorapp**. If you go ahead and continue the release, this will do a slot swap, and you should see your app starting to show some color, while the old grayscale labels will not be updating anymore.
+![Color app running](media/colorapponazure.png)
 
-![Color app in color](media/colorappincolor.png)
+We'll go ahead and fix that now.
+
+Go to your fork of the Github repository, and navigate to ```ApplicationModernization/CICDAppServiceVSTS/src/colormicroservice/routes/colors.js``` then hit the edit button to edit this file.
+
+![color.js](media/colorjs.png)
+
+Comment line 9 and uncomment line 10, to enable colors.
+
+![Edit color.js](media/colorjsedit.png)
+
+Scroll down to the bottom, and hit **Commit changes**.
+
+![Commit changes](media/commitchanges.png)
+
+This should trigger a build, then release the change to the staging environment. You will also get an email now that you need to approve swapping this deployment into production.
+
+![Pre-approval email](media/preapprovalemail.png)
+
+Once you click on the button, you will be able to Approve or Reject this. Hit Approve, and this will continue the deployment pipeline to deploy to production.
+
+![Pre-approval email](media/preapprovalscreen.png)
+
+Switch to the browser running the Web App, wait for a few minutes as the swap is completed, and you should start seeing some color.
+
+
+![Color app running](media/colorapponazurecolor.png)
 
 ### Scaling your cluster
-Now, scale the App Service Plan to more instances either using the Azure Portal or by executing the command below.
+Now that you are running the new app, scale the App Service Plan to more instances either using the Azure Portal or by executing the command below.
 ```
-az appservice plan update --number-of-workers 4 -n <plan name>
+az appservice plan update --number-of-workers 10 -n <plan name>
 ```
 
 In a few moments, as the Docker images are being pulled and deployed on new VMs, you should see more instances lighting up on your screen.
 
 
-If you run into trouble, you can view the streaming logs using the following command.
-```
-az webapp log config -n <web app name> --web-server-logging filesystem
-az webapp log tail -n <web app name>
-```
+![Color app running at scale](media/colorapponazurescale.png)
 
 ## Conclusion
 
-In this lab, you created a private Docker image repository on Azure Container Registry and pushed an application image to it. You also created an App Service Plan running Linux and a Web App that is configured to pull that Docker image. 
+In this lab, you created a private Docker image repository on Azure Container Registry and pushed an application image to it. You also created an App Service Plan running Linux and a Web App with production and staging slots.
+
+You configured a CI/CD pipeline using Visual Studio Team Services to build Docker images and push them to Azure Container Registry, then deploy them to a staging slot, followed by swapping with production.
+
+Finally, you scaled the App Service plan to run more instances.
 
 
 ## End your Lab
@@ -375,6 +400,7 @@ az group delete -n <rg name>
 
 - [Azure Container Registry](https://docs.microsoft.com/en-us/azure/container-registry/)
 - [Azure App Service Linux](https://docs.microsoft.com/en-us/azure/app-service/app-service-linux-readme)
+- [Visual Studio Team Services](https://www.visualstudio.com/team-services/)
 - [Continuous deployment with Azure Web Apps for Containers](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-ci-cd)
 
 
