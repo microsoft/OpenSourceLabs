@@ -6,8 +6,8 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   var computerName = os.hostname();
 
-  //var randomColor = getRandomGrayScaleColor();
-  var randomColor = getRandomColor();
+  //var randomColor = getRandomGrayScaleColor(); // <-- uncomment this
+  var randomColor = getRandomColor(); // <-- comment this
 
   var json = JSON.stringify({ 
     computerName: computerName, 

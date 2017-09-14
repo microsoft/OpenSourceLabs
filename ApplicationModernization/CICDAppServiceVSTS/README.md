@@ -254,7 +254,7 @@ Your tag here may differ depending on how many times you ran this build. Every t
 ![Azure Container Registry](media/acr.png)
 
 
-### Configure Release Pipeline
+### Configure Release Pipeline for Staging
 
 Now that you have your build pipeline configured to trigger automatically on every code commit, it is time for you to configure the release pipeline, to actually deploy your new Docker images.
 
@@ -290,15 +290,55 @@ Then configure the artifact version to be specified at the time of release, and 
 
 Finally, hit the small lightning bolt on the artifact to configure the continuous deployment trigger then hit save.
 
-![Configure C](media/artifactcd.png)
+![Configure Continuous Delivery](media/artifactcd.png)
 
+At this point, you may check your configuration by manually triggering a release through hitting the **Release** button then select the latest version from the Drop dropdown list.
+
+![Manual release](media/manualrelease.png)
+
+Review the logs to see the release progress.
+
+![Manual release logs](media/manualreleaselog.png)
+
+Once the release is complete, you should be able to access the microservice in the staging environment here [http://<microservice name\>-staging.azurewebsites.net/colors]()
+
+![Microservice staging output](media/microservicestaging.png)
+
+### Add Production environment to Release Pipeline
+
+You'll now create a new environment, pointing to the production slot on the Web App.
+
+Hover over the **Staging** environment and hit the **add** button to add a serial release step
+
+![Add Production environment](media/addproductionenv.png)
+
+Like before, elect the **empty process** template.
+
+![Select the Empty process template](media/releaseempty2.png)
+
+And name this environment **Production** then click on the **1 phase, 0 task** link to start adding tasks.
+
+![Name it Production](media/createproduction.png)
+
+Now add an **Azure App Service Manage** task.
+
+![Add App Service Deploy task](media/addappservicemanagetask.png)
+
+Configure the task with the microservice Web App name and choose the slot and make sure **Swap with production** is checked then **save**.
+
+![Configure the task](media/configureappservicemanagetask.png)
+
+Go back to the **Pipeline** tab and click on the **Pre-deployment conditions** to configure a gated deployment step.
+
+![Pre-deployment conditions](media/predeployment.png)
+
+Add yourself (or someone else on your project) as a pre-deployment approver. This means that you will need to approve swapping the staging environment into production.
+
+![Pre-deployment approver](media/predeploymentapprover.png)
 
 ![Color app with 4 instances](media/colorapp4instances.png)
 
 After you push the new code, VSTS will build a new Docker image and push it to the Azure Container Registry.
-
-
-
 
 Following this, VSTS will run the Release to deploy to the staging slot of the **colorapp**. If you go ahead and continue the release, this will do a slot swap, and you should see your app starting to show some color, while the old grayscale labels will not be updating anymore.
 
