@@ -143,16 +143,12 @@ az acr credential show -n <registry name>
 
 Update the Web App configurations with Azure Container Registry credentials and container image for both apps.
 
-> Due to a bug in the Azure CLI, you also need to explicitly set the image name as an Application Setting.
 ```
 az webapp config container set -n <color app name>
 -i <registry name>.azurecr.io/colorapp
 -r https://<registry name>.azurecr.io
 -u <acr admin username>
 -p <acr admin password>
-
-az webapp config appsettings set -n <color app name>
---settings DOCKER_CUSTOM_IMAGE_NAME="<registry name>.azurecr.io/colorapp"
 ```
 ```
 az webapp config container set -n <microservice name>
@@ -160,9 +156,6 @@ az webapp config container set -n <microservice name>
 -r https://<registry name>.azurecr.io
 -u <acr admin username>
 -p <acr admin password>
-
-az webapp config appsettings set -n <microservice name>
---settings DOCKER_CUSTOM_IMAGE_NAME="<registry name>.azurecr.io/colormicroservice"
 ```
 
 Configure the ```COLORMICROSERVICE``` environment variable on the **colorapp** Web App to point to the **colormicroservice**. This is how the application is configured to call the microservice through ```process.env.COLORMICROSERVICE```.
@@ -188,19 +181,123 @@ Create the staging slot, copying the configuration from the current **colormicro
 az webapp deployment slot create -n <microservice name> -s staging --configuration-source <microservice name>
 ```
 
-### Configure Continuous Delivery
+### Configure Build Pipeline
 
-You're now going to use the Azure Portal to easily configure a Continuous Build/Continuous deployment pipeline. This is going to be configured on Visual Studio Team Services.
+You're now going to use Visual Studio Team Services to setup the Build and Release pipelines.
 
-Navigate to the Continuous Delivery blade and hit Configure.
+Go to http://www.visualstudio.com and hit **Sign in** then sign in with your Microsoft account you use for Azure.
 
-![Configuring Continuous Delivery](media/contdelvsetup.png)
+![Sign-in to Visual Studio Team Services](media/vstssignin.png)
 
-In the **Source code** section, point the settings towards your forked copy of the repository. Make sure to change the **Dockerfile path** to ```ApplicationModernization/CICDAppServiceVSTS/src/colormicroservice/Dockerfile```
+If you don't have an account, setup an account by hitting **Create new account** otherwise, just create a **new team project**.
+
+![Create an account or project](media/vstsselectproject.png)
+
+Create an account if you have to. This should take a few minutes, and it will create a project for you.
+
+![Create an account if you have to](media/vstscreateaccount.png)
+
+Otherwise, create a new project on your existing account.
+
+![Create a project](media/vstscreateproject.png) 
+
+Once your project is ready, you will see the screen below. Since you're already hosting the source code somewhere else (you forked this repo in Github, right?), you'll choose the option to build code from an external repository.
+
+![Build from external repository](media/vstsbuildcodeexternal.png)
+
+Hit the **New Definition** button to start.
+
+![Create new build definition](media/newbuilddef.png)
+
+Select the **empty process** template.
+
+![Select Empty process template](media/createbuilddef.png)
+
+Change the process agent queue to **Hosted Linux Preview**. This has the tools required to build the Docker images.
+
+![Change build agent to Hosted Linux](media/process.png)
+
+Now authorize Visual Studio Team Services to your Github account then pick the right repository that you forked.
+
+![Configure sources](media/getsources.png)
+
+After configuring the repository, hit **Add Task**. You're now going to add a Docker task to build a Docker image from your source code.
+
+![Add Docker task](media/adddockertask.png)
+
+In the task, you're going to point it towards your Azure Container Registry and you're going to configure it to point to the Docker file that should be in the following path in your forked repository: ```ApplicationModernization/CICDAppServiceVSTS/src/colormicroservice/Dockerfile```
+
+Additionally, make sure that the image name is ```colormicroservice:$(Build.BuildId)``` and that **Qualify Image Name** is checked.
+
+This will tag the image version with your Azure Container Registry name and **Build Id** allowing you to control which version is eventually deployed. Do not use the **latest** tag here.
+
+![Build image task](media/buildtask.png)
+
+Now add another Docker task, this time configure it with **Push an image** action and the same image name ```colormicroservice:$(Build.BuildId)```. Make sure **Qualify Image Name** is checked.
+
+![Push image task](media/pushtask.png)
+
+Head over to the **Triggers** tab, and enable Continuous Integration. This will trigger the build pipeline whenever a new change is committed to your code repository.
+
+Naturally, you could do this on a specific branch.
+
+![Enable CI](media/buildtrigger.png)
+
+Finally, hit the **Save & queue** button to queue a build manually, then review the build log, you should be able to see something like the below.
+
+![Build log](media/buildlog.png)
+
+Congratulations, you've run your first build pipeline! If you login to the Azure Portal and navigate to your Azure Container Registry, you should be able to find the image there.
+
+Your tag here may differ depending on how many times you ran this build. Every time the build runs, a new image with a new tag is created.
+
+![Azure Container Registry](media/acr.png)
+
+
+### Configure Release Pipeline
+
+Now that you have your build pipeline configured to trigger automatically on every code commit, it is time for you to configure the release pipeline, to actually deploy your new Docker images.
+
+Head over to the **Releases** tab and hit the **new definition** button. 
+
+![Create Release definition](media/newreleasedef.png)
+
+Select the **empty process** template.
+
+![Select the Empty process template](media/releaseempty.png)
+
+And name this environment **Staging** then click on the **1 phase, 0 task** link to start adding tasks.
+
+![Name it Staging](media/createstaging.png)
+
+Now add an **Azure App Service Deploy** task.
+
+![Add App Service Deploy task](media/addappservicedeploytask.png)
+
+Configure the task by choosing your microservice Web App, checking **Deploy to slot** and choosing the **staging slot**.
+
+You also need to provide your Azure Container Registry namespace in the form of ``<acr name>.azurecr.io``, the microservice image name in the repository as ``colormicroservice`` and the image tag as ``$(Build.BuildId)``.
+
+![Configure the task](media/configureappservicedeploytask.png)
+
+When you're done, save the definition and head to the **Pipeline** tab and click on **add artifact**.
+
+![Add artifact to pipeline](media/pipelineaddartifact.png)
+
+Then configure the artifact version to be specified at the time of release, and give it a name **Drop**.
+
+![Configure artifact](media/configureartifact.png)
+
+Finally, hit the small lightning bolt on the artifact to configure the continuous deployment trigger then hit save.
+
+![Configure C](media/artifactcd.png)
+
 
 ![Color app with 4 instances](media/colorapp4instances.png)
 
 After you push the new code, VSTS will build a new Docker image and push it to the Azure Container Registry.
+
+
 
 
 Following this, VSTS will run the Release to deploy to the staging slot of the **colorapp**. If you go ahead and continue the release, this will do a slot swap, and you should see your app starting to show some color, while the old grayscale labels will not be updating anymore.
