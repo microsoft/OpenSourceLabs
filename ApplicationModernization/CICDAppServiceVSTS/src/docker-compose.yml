@@ -1,0 +1,15 @@
+version: '2.1'
+
+services:
+  colormicroservices:
+    image: colormicroservice
+    build: .
+    ports:
+      - 3000:3000
+  colorapp:
+    image: colorapp
+    build: .
+    ports:
+      - 80:3000
+    environment:
+      - COLORMICROSERVICE=http://localhost:3000/colors
