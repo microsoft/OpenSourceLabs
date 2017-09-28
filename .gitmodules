@@ -2,3 +2,7 @@
 	path = ApplicationModernization/ContainersOnAzureIntroLab
 	url = https://github.com/shanepeckham/ContainersOnAzure_IntroLab
 	branch = master
+[submodule "InfrastructureModernization/OpenShiftWithCloudFormsAndOMS"]
+	path = InfrastructureModernization/OpenShiftWithCloudFormsAndOMS
+	url = git@github.com:khaled99b/LAB-OpenShift-Container-Platform-and-CloudForms-on-Azure-.git
+	branch = master
