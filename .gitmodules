@@ -6,3 +6,20 @@
 	path = InfrastructureModernization/OpenShiftWithCloudFormsAndOMS
 	url = git@github.com:khaled99b/LAB-OpenShift-Container-Platform-and-CloudForms-on-Azure-.git
 	branch = master
+[submodule "ApplicationModernization/ScenarioLabs/LoyaltyLab"]
+	path = ApplicationModernization/ScenarioLabs/LoyaltyLab
+	url = git@github.com:shanepeckham/CADLab_Loyalty.git
+	branch = master
+[submodule "ApplicationModernization/ScenarioLabs/PersonalisationLab"]
+	path = ApplicationModernization/ScenarioLabs/PersonalisationLab
+	url = git@github.com:shanepeckham/CADScenario_Personalisation.git
+	branch = master
+[submodule "ApplicationModernization/ScenarioLabs/LoyaltySecurityLab"]
+	path = ApplicationModernization/ScenarioLabs/LoyaltySecurityLab
+	url = git@github.com:shanepeckham/CADLab_Loyalty_Security.git
+	branch = master
+[submodule "ApplicationModernization/ScenarioLabs/RecommendationsLab"]
+	path = ApplicationModernization/ScenarioLabs/RecommendationsLab
+	url = git@github.com:shanepeckham/CADScenario_Recommendations.git
+	branch = master
+

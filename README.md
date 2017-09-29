@@ -18,6 +18,14 @@ In order to updated the repository submodules content, you cna execute the follo
 git submodule update --remote --recursive
 ```
 
+## Adding a submodule
+
+Adding a submodule to point to an external repository is simple. Please use this command to add a new submodule to this repository:
+
+```
+git submodule add [Repository Url] [Directory to Add the submodule]
+```
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
