@@ -22,4 +22,7 @@
 	path = ApplicationModernization/ScenarioLabs/RecommendationsLab
 	url = git@github.com:shanepeckham/CADScenario_Recommendations.git
 	branch = master
-
+[submodule "InfrastructureModernization/RedHatStorageOnAzure"]
+	path = InfrastructureModernization/RedHatStorageOnAzure
+	url = git@github.com:khaled99b/LAB-Red-Hat-Storage-on-Azure.git
+	branch = master
