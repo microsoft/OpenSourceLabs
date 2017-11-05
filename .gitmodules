@@ -26,3 +26,7 @@
 	path = InfrastructureModernization/RedHatStorageOnAzure
 	url = git@github.com:khaled99b/LAB-Red-Hat-Storage-on-Azure.git
 	branch = master
+[submodule "ApplicationModernization/ServerlessMicroservicesLab"]
+	path = ApplicationModernization/ServerlessMicroservicesLab
+	url = git@github.com:shanepeckham/ServerlessMicroservices.git
+	branch = master
