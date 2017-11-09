@@ -30,3 +30,8 @@
 	path = ApplicationModernization/ServerlessMicroservicesLab
 	url = git@github.com:shanepeckham/ServerlessMicroservices.git
 	branch = master
+[submodule "ApplicationModernization/ScenarioLabs/ContainerizeYourEnterprise-ProjectPhoenix"]
+	path = ApplicationModernization/ScenarioLabs/ContainerizeYourEnterprise-ProjectPhoenix
+	url = git@github.com:denniszielke/phoenix.git
+	branch = master
+
