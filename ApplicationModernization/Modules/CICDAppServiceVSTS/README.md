@@ -100,6 +100,10 @@ Essentially, the **colorapp** does AJAX requests to the **colormicroservice** an
 
 **Fork** then clone your forked repository to your machine
 
+```
+git clone https://github.com/<your github username>/OpenSourceLabs.git
+```
+
 Change directory to ```ApplicationModernization/CICDAppServiceVSTS/src```
 
 Build both images
