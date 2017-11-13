@@ -124,7 +124,7 @@ Browse to http://localhost/
 
 Create an Azure Container Registry (~2 minutes)
 ```
-az acr create -n <registry name> --admin-enabled --sku Managed_Standard
+az acr create -n <registry name> --admin-enabled --sku Standard
 ```
 
 Login into the registry. This will enable your local Docker installation to be able to access the registry.
