@@ -104,7 +104,7 @@ Essentially, the **colorapp** does AJAX requests to the **colormicroservice** an
 git clone https://github.com/<your github username>/OpenSourceLabs.git
 ```
 
-Change directory to ```ApplicationModernization/CICDAppServiceVSTS/src```
+Change directory to ```OpenSourceLabs/ApplicationModernization/CICDAppServiceVSTS/src```
 
 Build both images
 ```
