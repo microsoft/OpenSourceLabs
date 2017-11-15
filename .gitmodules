@@ -38,3 +38,15 @@
 	path = ApplicationModernization/ContainersDemosLab
 	url = git@github.com:denniszielke/container_demos.git
 	branch = master
+[submodule "ApplicationModernization/KubeOnAzureLabs"]
+	path = ApplicationModernization/KubeOnAzureLabs
+	url = git@github.com:justindavies/KubeOnAzure.git
+	branch = master
+[submodule "ApplicationModernization/KubernetesWorkshopsLab/K8sLab"]
+	path = ApplicationModernization/KubernetesWorkshopsLab/K8sLab
+	url = git@github.com:palma21/k8slab.git
+	branch = master
+[submodule "ApplicationModernization/KubernetesWorkshopsLab/K8sLabProctor"]
+	path = ApplicationModernization/KubernetesWorkshopsLab/K8sLabProctor
+	url = https://github.com/palma21/k8slabproctor
+	branch = master
