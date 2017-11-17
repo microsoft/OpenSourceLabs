@@ -50,3 +50,7 @@
 	path = ApplicationModernization/KubernetesWorkshopsLab/K8sLabProctor
 	url = https://github.com/palma21/k8slabproctor
 	branch = master
+[submodule "ApplicationModernization/KubernetesWorkshopsLab/KubernetesTutorialLab"]
+	path = ApplicationModernization/KubernetesWorkshopsLab/KubernetesTutorialLab
+	url = git@github.com:vadimzendejas/KubernetesTutorialLab.git
+	branch = master
