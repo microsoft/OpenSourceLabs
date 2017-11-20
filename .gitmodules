@@ -4,47 +4,47 @@
 	branch = master
 [submodule "InfrastructureModernization/OpenShiftWithCloudFormsAndOMS"]
 	path = InfrastructureModernization/OpenShiftWithCloudFormsAndOMS
-	url = git@github.com:khaled99b/LAB-OpenShift-Container-Platform-and-CloudForms-on-Azure-.git
+	url = https://github.com/khaled99b/LAB-OpenShift-Container-Platform-and-CloudForms-on-Azure-.git
 	branch = master
 [submodule "ApplicationModernization/ScenarioLabs/LoyaltyLab"]
 	path = ApplicationModernization/ScenarioLabs/LoyaltyLab
-	url = git@github.com:shanepeckham/CADLab_Loyalty.git
+	url = https://github.com/shanepeckham/CADLab_Loyalty.git
 	branch = master
 [submodule "ApplicationModernization/ScenarioLabs/PersonalisationLab"]
 	path = ApplicationModernization/ScenarioLabs/PersonalisationLab
-	url = git@github.com:shanepeckham/CADScenario_Personalisation.git
+	url = https://github.com/shanepeckham/CADScenario_Personalisation.git
 	branch = master
 [submodule "ApplicationModernization/ScenarioLabs/LoyaltySecurityLab"]
 	path = ApplicationModernization/ScenarioLabs/LoyaltySecurityLab
-	url = git@github.com:shanepeckham/CADLab_Loyalty_Security.git
+	url = https://github.com/shanepeckham/CADLab_Loyalty_Security.git
 	branch = master
 [submodule "ApplicationModernization/ScenarioLabs/RecommendationsLab"]
 	path = ApplicationModernization/ScenarioLabs/RecommendationsLab
-	url = git@github.com:shanepeckham/CADScenario_Recommendations.git
+	url = https://github.com/shanepeckham/CADScenario_Recommendations.git
 	branch = master
 [submodule "InfrastructureModernization/RedHatStorageOnAzure"]
 	path = InfrastructureModernization/RedHatStorageOnAzure
-	url = git@github.com:khaled99b/LAB-Red-Hat-Storage-on-Azure.git
+	url = https://github.com/khaled99b/LAB-Red-Hat-Storage-on-Azure.git
 	branch = master
 [submodule "ApplicationModernization/ServerlessMicroservicesLab"]
 	path = ApplicationModernization/ServerlessMicroservicesLab
-	url = git@github.com:shanepeckham/ServerlessMicroservices.git
+	url = https://github.com/shanepeckham/ServerlessMicroservices.git
 	branch = master
 [submodule "ApplicationModernization/ScenarioLabs/ContainerizeYourEnterprise-ProjectPhoenix"]
 	path = ApplicationModernization/ScenarioLabs/ContainerizeYourEnterprise-ProjectPhoenix
-	url = git@github.com:denniszielke/phoenix.git
+	url = https://github.com/denniszielke/phoenix.git
 	branch = master
 [submodule "ApplicationModernization/ContainersDemosLab"]
 	path = ApplicationModernization/ContainersDemosLab
-	url = git@github.com:denniszielke/container_demos.git
+	url = https://github.com/denniszielke/container_demos.git
 	branch = master
 [submodule "ApplicationModernization/KubeOnAzureLabs"]
 	path = ApplicationModernization/KubeOnAzureLabs
-	url = git@github.com:justindavies/KubeOnAzure.git
+	url = https://github.com/justindavies/KubeOnAzure.git
 	branch = master
 [submodule "ApplicationModernization/KubernetesWorkshopsLab/K8sLab"]
 	path = ApplicationModernization/KubernetesWorkshopsLab/K8sLab
-	url = git@github.com:palma21/k8slab.git
+	url = https://github.com/palma21/k8slab.git
 	branch = master
 [submodule "ApplicationModernization/KubernetesWorkshopsLab/K8sLabProctor"]
 	path = ApplicationModernization/KubernetesWorkshopsLab/K8sLabProctor
@@ -52,5 +52,5 @@
 	branch = master
 [submodule "ApplicationModernization/KubernetesWorkshopsLab/KubernetesTutorialLab"]
 	path = ApplicationModernization/KubernetesWorkshopsLab/KubernetesTutorialLab
-	url = git@github.com:vadimzendejas/KubernetesTutorialLab.git
+	url = https://github.com/vadimzendejas/KubernetesTutorialLab.git
 	branch = master
