@@ -54,3 +54,8 @@
 	path = ApplicationModernization/KubernetesWorkshopsLab/KubernetesTutorialLab
 	url = https://github.com/vadimzendejas/KubernetesTutorialLab.git
 	branch = master
+[submodule "ApplicationModernization/CloudFoundryOnAzure"]
+	path = ApplicationModernization/CloudFoundryOnAzure
+	url = https://github.com/justindavies/CloudFoundryOnAzure.git
+	branch = master
+
