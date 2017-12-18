@@ -59,3 +59,6 @@
 	url = https://github.com/justindavies/CloudFoundryOnAzure.git
 	branch = master
 
+[submodule "InfrastructureModernization/Ansible-Azure-Lab"]
+	path = InfrastructureModernization/Ansible-Azure-Lab
+	url = https://github.com/palma21/ansible-azure-lab
