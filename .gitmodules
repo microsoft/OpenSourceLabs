@@ -67,3 +67,6 @@
 	url = https://github.com/justindavies/OSSCIWorkshop.git
 	branch = master
 
+[submodule "ApplicationModernization/ContainerizeYourEnterprise"]
+	path = ApplicationModernization/ContainerizeYourEnterprise
+	url = https://github.com/denniszielke/phoenix/
